@@ -13,9 +13,9 @@ define('SITENAME', 'Freetube');
 
 // DATABASE CONFIG
 class DatabaseConfig {
-  protected $host = 'localhost';
-  protected $user = 'root';
-  protected $pw = 'root';
+  protected $host = '';
+  protected $user = '';
+  protected $pw = '';
   protected $db = 'freetube';
 }
 
