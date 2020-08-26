@@ -20,10 +20,7 @@ Freetube is an online video platform. It has a working backend and includes a  s
 **2. Channels**
 
 To log into admin account use the following credentials:
-Channel Email: *john.doe@gmail.com*
-Password: *TestPasswort#123*
+* Channel Email: *john.doe@gmail.com*
+* Password: *TestPasswort#123*
 
 To log into other existing accounts please refer to your database. Every existing channel has the same password: *TestPasswort#123*
-
-
-
