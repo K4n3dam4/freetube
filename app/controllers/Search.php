@@ -14,9 +14,15 @@ class Search extends Controller {
     $categories = $this->categoryModel->getCategories();
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $videos_empty = NULL;
+      $keyword = trim($_POST['search']);
+
       // sanitize
       $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+      if (!$this->videoModel->countVideosSearch($keyword)) {
+        $videos_empty = true;
+      }
 
       if (empty($_POST['search'])) {
 
@@ -25,7 +31,8 @@ class Search extends Controller {
       } else {
         $data = [
           'categories' => $categories,
-          'search' => trim($_POST['search']),
+          'videos_empty' => $videos_empty,
+          'search' => $keyword,
         ];
 
         $this->view('search/keyword', $data);
@@ -42,11 +49,9 @@ class Search extends Controller {
     $categories = $this->categoryModel->getCategories();
 
     if ($cat_id != NULL) {
-      $videos_empty;
+      $videos_empty = NULL;
 
-      if ($this->videoModel->countVideosCat($cat_id) > 0) {
-        $videos_empty = false;
-      } else {
+      if ($this->videoModel->countVideosSearch($cat_id) == 0) {
         $videos_empty = true;
       }
 

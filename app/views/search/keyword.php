@@ -10,6 +10,12 @@ require APPROOT . '/views/includes/header.php';
     <section class="featured">
       <!-- CONTAINER -->
       <div class="container">
+          <!-- videos empty -->
+          <?php if ($data['videos_empty'] == true) : ?>
+            <div class="d-flex justify-content-center align-items-center flex-column my-5">
+              <img class="w-50 h-50" src="<?= URLROOT;?>/assets/images/site/not_found.svg" alt="">
+            </div>
+          <?php endif; ?>
 
         <div class="row search-ajax">
 

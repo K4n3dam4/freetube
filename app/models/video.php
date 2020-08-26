@@ -322,13 +322,24 @@ class Video {
     return $this->db->rowCount();
   }
 
-  public function countVideosCat ($cat_id) {
+  public function countVideosSearch ($search) {
+    // similar to keyword
+    $s = '%'. $search .'%';
+
     $this->db->query(
-    'SELECT *
+    'SELECT videos.*, channels.channel_id, channels.channel_name, channels.channel_img, categories.cat_id, categories.cat_title 
     FROM videos
-    WHERE vid_cat_id = (?)'
-    );
-    $this->db->bind(1, $cat_id);
+    INNER JOIN channels 
+    ON videos.vid_channel_id = channels.channel_id 
+    INNER JOIN categories 
+    ON videos.vid_cat_id = categories.cat_id 
+    WHERE vid_cat_id = (?)
+    OR channel_name LIKE (?) 
+    OR vid_tags LIKE (?) OR vid_title LIKE (?)');
+    $this->db->bind(1, $search);
+    $this->db->bind(2, $s);
+    $this->db->bind(3, $s);
+    $this->db->bind(4, $s);
     $this->db->resultSet();
 
     return $this->db->rowCount();
