@@ -8,6 +8,7 @@ class Search extends Controller {
     $this->categoryModel = $this->model('Category');
   }
 
+  // search keyword
   public function keyword() {
     // all categories
     $categories = $this->categoryModel->getCategories();
@@ -18,44 +19,10 @@ class Search extends Controller {
 
 
       if (empty($_POST['search'])) {
-        // get all videos
-        // $videos = $this->videoModel->getVideos();
 
-        // // data array
-        // $data = [
-        //   'title' => SITENAME,
-        //   'videos' => $videos,
-        //   'categories' => $categories
-        // ];
-
-        // // load index hand over data
-
-        // $this->view('search/keyword', $data);
-        
-
-        // redirect to index if empty
         redirect('index');
 
       } else {
-
-        // // search videos
-        // $videos = $this->videoModel->searchVideos(trim($_POST['search']));
-
-        // // hand over data
-        // $data = [
-        //   // search word
-        //   'search' => trim($_POST['search']),
-
-        //   // videos
-        //   'videos' => $videos,
-        //   // categories
-        //   'categories' => $categories
-        // ];
-
-        // // load index hand over data
-        // $this->view('search/keyword', $data);
-
-        // load view with keyword for ajax request
         $data = [
           'categories' => $categories,
           'search' => trim($_POST['search']),
@@ -63,7 +30,35 @@ class Search extends Controller {
 
         $this->view('search/keyword', $data);
       }
+
     } else {
+      redirect('index');
+    }
+  }
+
+  // search category
+  public function category($cat_id = NULL) {
+    // all categories
+    $categories = $this->categoryModel->getCategories();
+
+    if ($cat_id != NULL) {
+      $videos_empty;
+
+      if ($this->videoModel->countVideosCat($cat_id) > 0) {
+        $videos_empty = false;
+      } else {
+        $videos_empty = true;
+      }
+
+      $data = [
+        'categories' => $categories,
+        'videos_empty' => $videos_empty,
+        'search' => $cat_id,
+      ];
+
+      $this->view('search/category', $data);
+    } else {
+      // no cat id redirect to index
       redirect('index');
     }
   }

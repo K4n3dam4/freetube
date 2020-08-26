@@ -75,6 +75,29 @@ class AJAX extends Controller {
     }
   }
 
+  public function searchCategory() {
+    if (isset($_POST['getData'])) {
+      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+      $start = trim($_POST['start']);
+      $limit = trim($_POST['limit']);
+      $search = trim($_POST['keyword']);
+
+      $videos = $this->videoModel->searchCatVidAjax($limit, $start, $search);
+
+      $data = [
+        'videos' => $videos
+      ];
+
+      if ($videos != false) {
+        $this->view('includes/video_cards', $data);
+      } else {
+        $videos;
+      }
+
+    }
+  }
+
   public function loadComments() {
     if (isset($_POST['getCom'])) {
       $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);

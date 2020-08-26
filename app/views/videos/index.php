@@ -8,7 +8,7 @@ require APPROOT . '/views/includes/header.php';
     <div class="container">
       <div class="row align-items-center pt-4">
         <div class="col-lg-6 d-flex align-items-center">
-          <img class="d-block img-fluid mr-5" src="<?php echo URLROOT; ?>/<?php echo $data['channel_img']?>" alt="" srcset="">
+          <img class="d-block img-fluid mr-5" src="<?php echo URLROOT . '/' .$data['channel_img']?>" alt="" srcset="">
           <h3><?php echo $data['channel_name'];?></h3>
         </div>
         <div class="col-lg-6 d-flex align-items-center justify-content-end">
@@ -130,6 +130,7 @@ require APPROOT . '/views/includes/header.php';
                         <div class="form-group">
                           <label for="edit_cat_id">Category</label>
                           <select name="edit_cat_id" class="form-control">
+                            <!-- first select is vid_cat_id -->
                             <?php foreach($data['categories'] as $key => $cat) :?>
                               <?php if ($video['cat_id'] == $cat['cat_id']) : ?>
                                 <option value="<?php echo $cat['cat_id']; ?>"><?php echo $cat['cat_title']; ?></option>

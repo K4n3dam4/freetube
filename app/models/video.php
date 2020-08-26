@@ -15,7 +15,7 @@ class Video {
   public function getVideos() {
     // join databases and get all videoa
     $this->db->query(
-    'SELECT * 
+    'SELECT videos.*, channels.channel_id, channels.channel_name, channels.channel_img 
     FROM videos 
     INNER JOIN channels 
     ON videos.vid_channel_id = channels.channel_id 
@@ -30,7 +30,7 @@ class Video {
   public function getVideosAjax($start, $limit) {
     // join databases and get all videos
     $this->db->query(
-    "SELECT *
+    "SELECT videos.*, channels.channel_id, channels.channel_name, channels.channel_img, categories.cat_id, categories.cat_title 
     FROM videos 
     INNER JOIN channels 
     ON videos.vid_channel_id = channels.channel_id 
@@ -52,7 +52,7 @@ class Video {
   public function getVideo($video) {
     // join databases and get video
     $this->db->query(
-    'SELECT *
+    'SELECT videos.*, channels.channel_id, channels.channel_name, channels.channel_img, categories.cat_id, categories.cat_title 
     FROM videos
     INNER JOIN channels
     ON videos.vid_channel_id = channels.channel_id
@@ -69,7 +69,7 @@ class Video {
   public function getChannelVideos($channel) {
     // join databases and get videos of channel
     $this->db->query(
-    'SELECT * 
+    'SELECT videos.*, channels.channel_id, channels.channel_name, channels.channel_img, categories.cat_id, categories.cat_title 
     FROM videos 
     INNER JOIN channels 
     ON videos.vid_channel_id = channels.channel_id 
@@ -107,7 +107,7 @@ class Video {
 
     // Search channel names for keywords
     $this->db->query(
-    "SELECT * 
+    "SELECT videos.*, channels.channel_id, channels.channel_name, channels.channel_img, categories.cat_id, categories.cat_title 
     FROM videos 
     INNER JOIN channels 
     ON videos.vid_channel_id = channels.channel_id 
@@ -132,13 +132,42 @@ class Video {
     }
   }
 
+
+  // search videos for category
+  public function searchCatVidAjax($limit, $start, $cat_id) {
+    // similar to keyword
+
+    // Search videos for category
+    $this->db->query(
+    "SELECT videos.*, channels.channel_id, channels.channel_name, channels.channel_img, categories.cat_id, categories.cat_title 
+    FROM videos 
+    INNER JOIN channels 
+    ON videos.vid_channel_id = channels.channel_id 
+    INNER JOIN categories 
+    ON videos.vid_cat_id = categories.cat_id 
+    WHERE cat_id = (?) 
+    ORDER BY vid_like_count DESC 
+    LIMIT $start,$limit");
+
+    $this->db->bind(1, $cat_id);
+
+    $result = $this->db->resultSet();
+
+    // return result
+    if ($this->db->rowCount() > 0) {
+      return $result;
+    } else {
+      return false;
+    }
+  }
+
   // search channel videos for keyword
   public function searchChannelVideos($channel, $search) {
     // similar to keyword
     $s = '%'. $search .'%';
 
     $this->db->query(
-    'SELECT * 
+    'SELECT videos.*, channels.channel_id, channels.channel_name, channels.channel_img, categories.cat_id, categories.cat_title 
     FROM videos 
     INNER JOIN channels 
     ON videos.vid_channel_id = channels.channel_id 
@@ -221,7 +250,7 @@ class Video {
     $this->db->execute();
   }
 
-  // edit
+  // edit channel video
   public function editChannelVideo($video) {
     $this->db->query(
     'UPDATE videos
@@ -241,6 +270,7 @@ class Video {
 
   }
 
+  // edit admin video
   public function editAdminVideo($video)
   {
     $this->db->query(
@@ -287,6 +317,18 @@ class Video {
     'SELECT * 
     FROM videos');
 
+    $this->db->resultSet();
+
+    return $this->db->rowCount();
+  }
+
+  public function countVideosCat ($cat_id) {
+    $this->db->query(
+    'SELECT *
+    FROM videos
+    WHERE vid_cat_id = (?)'
+    );
+    $this->db->bind(1, $cat_id);
     $this->db->resultSet();
 
     return $this->db->rowCount();

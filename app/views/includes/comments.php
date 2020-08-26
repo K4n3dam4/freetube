@@ -1,12 +1,12 @@
 <?php foreach($data['comments'] as $comment) : ?>
   <div class="channel-comment mt-4 d-flex">
     <div>
-      <img class="" src="<?php echo URLROOT; ?>/<?php echo $comment['channel_img']; ?>" alt="">
+      <img class="" src="<?php echo URLROOT . '/' . $comment['channel_img']; ?>" alt="">
     </div>
     <div class="mx-3 channel-comment-body">
 
       <div class="comment-channel-name d-flex">
-        <b class="text-primary mr-3"><a class="text-primary" href="<?php echo URLROOT; ?>/videos/index/<?php echo $comment['com_channel_id']; ?>"><?php echo $comment['channel_name']; ?></a></b>
+        <b class="text-primary mr-3"><a class="text-primary" href="<?php echo URLROOT . '/videos/index/' . $comment['com_channel_id']; ?>"><?php echo $comment['channel_name']; ?></a></b>
         <?php if(isLoggedIn() && $_SESSION['channel_id'] == $comment['com_channel_id']) : ?>
           <form action="<?php echo URLROOT;?>/view/del_com" method="post">
             <input type="hidden" name="com_vid_id" value="<?php echo $comment['com_vid_id']; ?>">
@@ -19,7 +19,7 @@
         
       <?php if (isLoggedIn() && $_SESSION['channel_id'] == $comment['com_channel_id']) : ?>
         <div class="com-edit-form d-none" data-index="<?php echo $comment['com_id']; ?>">
-          <form action="<?php echo URLROOT; ?>/view/edit_com/<?php echo $comment['com_vid_id'];?>" method="post">
+          <form action="<?php echo URLROOT . '/view/edit_com/' . $comment['com_vid_id'];?>" method="post">
             <input type="hidden" name="com_id" value="<?php echo $comment['com_id'];?>">
             <textarea class="com-edit" name="com_edit"><?php echo $comment['com_content']; ?></textarea>
             <div class="comment-btns mt-2 d-flex justify-content-end">

@@ -29,11 +29,9 @@
               Categories
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <?php
-              foreach ($data['categories'] as $key => $cat) {
-                echo "<a class='dropdown-item' href='#'>{$cat['cat_title']}</a>";
-              }
-            ?>
+            <?php foreach ($data['categories'] as $key => $cat) : ?>
+              <a class='dropdown-item' href='<?= URLROOT . '/search/category/' . $cat['cat_id'] ?>'><?= $cat['cat_title'] ?></a>
+            <?php endforeach; ?>
             </div>
           </li>
 

@@ -10,7 +10,7 @@ require APPROOT . '/views/includes/header.php';
     <!-- video -->
     <div>
       <div class="main-video embed-responsive embed-responsive-16by9">
-        <video controls src="<?php echo URLROOT; ?>/<?php echo $data['main_vid']['vid_url']; ?>"></video>
+        <video controls src="<?php echo URLROOT . '/' . $data['main_vid']['vid_url']; ?>"></video>
       </div>
       <div class="row">
         <div class="col-md-8 col-sm-6">
@@ -41,11 +41,10 @@ require APPROOT . '/views/includes/header.php';
       <hr>
       <div class="row">
         <div class="col-5 d-flex align-items-center">
-          <img class="d-block" src="<?php echo URLROOT; ?>/<?php echo $data['main_vid']['channel_img']?>" alt="" srcset="">
+          <img class="d-block" src="<?php echo URLROOT . '/' . $data['main_vid']['channel_img']?>" alt="" srcset="">
           <p class="meta pl-3">
             <h5>
-              <a class="text-primary" href="<?php echo URLROOT; ?>/videos/index/
-              <?php echo $data['main_channel_id']; ?>"><?php echo $data['main_vid']['channel_name']; ?>
+              <a class="text-primary" href="<?php echo URLROOT . '/videos/index/'. $data['main_vid']['channel_id']; ?>"><?php echo $data['main_vid']['channel_name']; ?>
               </a>
             </h5>
           </p>

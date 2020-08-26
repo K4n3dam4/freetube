@@ -649,6 +649,7 @@ h1, h2, h3, h4, h5 {
   -webkit-animation-delay: -21s;
           animation-delay: -21s;
 }
+
 .star:nth-child(21):before {
   top: 1.5px;
   left: -1.5px;
@@ -2586,6 +2587,11 @@ h1, h2, h3, h4, h5 {
   }
 }
 
+/* ======== NO VIDEOS =========== */
+.no-videos {
+  position: absolute;
+  top: 55%;
+}
 
 /* =========== HEADER =========== */
 
