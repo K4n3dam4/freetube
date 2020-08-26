@@ -24,3 +24,4 @@ To log into admin account use the following credentials:
 * Password: *TestPasswort#123*
 
 To log into other existing accounts please refer to your database. Every existing channel has the same password: *TestPasswort#123*
+
