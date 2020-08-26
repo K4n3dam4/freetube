@@ -17,6 +17,10 @@ class Admin extends Controller {
     $this->commentModel = $this->model('Comment');
   }
 
+  public function index() {
+    $this->view('error/404');
+  }
+
   public function dashboard() {
     $channel_count = $this->channelModel->countChannels();
     $categories = $this->categoryModel->getCategories();
