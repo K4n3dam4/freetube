@@ -8,6 +8,10 @@ class Channels extends Controller {
     $this->channelModel = $this->model('Channel');
   }
 
+  public function index() {
+    redirect('errors/page_not_found');
+  }
+
   // ======SIGNUP
   public function signup() {
     // all categories
@@ -101,7 +105,7 @@ class Channels extends Controller {
         try {
           $this->channelModel->add($data);
           flash('register_success', 'You are signed up and can now log in');
-          redirect('/channels/login');
+          redirect('channels/login');
 
         } catch (PDOException $e) {
           // catch error
@@ -154,7 +158,7 @@ class Channels extends Controller {
     $_SESSION['channel_owner'] = $channel['channel_owner'];
     $_SESSION['channel_email'] = $channel['channel_email'];
 
-    redirect('index');
+    redirect('home/index');
   }
 
   // ===== LOGIN
@@ -256,7 +260,7 @@ class Channels extends Controller {
     // end session
     session_destroy();
 
-    redirect('index');
+    redirect('home/index');
   }
 
   public function profile() {
@@ -448,7 +452,7 @@ class Channels extends Controller {
       }
 
     } else {
-      redirect('/channels/login');
+      redirect('channels/login');
     }
     
   }

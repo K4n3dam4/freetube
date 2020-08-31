@@ -166,3 +166,50 @@ function openVideoEdit(button) {
     editVideoMatch[5].setAttribute('name', 'vid-like-count');
   }
 }
+
+function openCommentEdit(button) {
+  let editComment = document.querySelectorAll('.edit-comment');
+  let tableContent = document.querySelectorAll('.comment-table-content');
+
+  // buttons
+  let openEdit = document.querySelectorAll('.open-comment-edit');
+  let submitEdit = document.querySelectorAll('.submit-edit');
+
+  let index = button.getAttribute('data-index');
+
+  tableContent.forEach(element => {
+    element.classList.remove('d-none');
+    if (element.getAttribute('data-index') == index) {
+      element.classList.toggle('d-none');
+    }
+  });
+
+  openEdit.forEach(element => {
+    element.classList.remove('d-none');
+    if (element.getAttribute('data-index') == index) {
+      element.classList.toggle('d-none');
+    }
+  });
+
+  submitEdit.forEach(element => {
+    element.removeAttribute('name');
+    element.classList.add('d-none');
+    if (element.getAttribute('data-index') == index) {
+      element.classList.toggle('d-none');
+      element.setAttribute('name', 'channel-id');
+    }
+  });
+
+  // new nodelists
+  let editCommentMatch = new Array;
+
+  editComment.forEach(element => {
+    element.removeAttribute('name');
+    element.classList.add('d-none');
+
+    if (element.getAttribute('data-index') == index) {
+      element.classList.toggle('d-none');
+      element.setAttribute('name', 'com-content');
+    }
+  });
+}

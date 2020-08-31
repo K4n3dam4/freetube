@@ -22,7 +22,7 @@ class AJAX extends Controller {
       if ($videos != false) {
         $this->view('includes/video_cards', $data);
       } else {
-        echo $videos;
+        $videos;
       }
 
     }
@@ -46,7 +46,7 @@ class AJAX extends Controller {
       if ($videos != false) {
         $this->view('includes/video_side', $data);
       } else {
-        echo $videos;
+        $videos;
       }
 
     }

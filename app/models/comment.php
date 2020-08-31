@@ -28,6 +28,7 @@ class Comment  {
   }
 
   // ======= GET COMMENTS
+
   public function getComments($data) {
     $this->db->query(
     'SELECT *
@@ -42,7 +43,7 @@ class Comment  {
     return $this->db->resultSet();
   }
 
-    // get all videos ajax
+    // get all comments ajax
     public function getCommentsAjax($start, $limit, $id) {
       // join databases and get all videos
       $this->db->query(
@@ -58,6 +59,25 @@ class Comment  {
       
       $result = $this->db->resultSet();
   
+      if ($this->db->rowCount() > 0) {
+        return $result;
+      } else {
+        return false;
+      }
+    }
+
+    public function getCommentsAdmin() {
+      $this->db->query(
+      "SELECT comments.*, channels.channel_name, videos.vid_url
+      FROM comments 
+      INNER JOIN videos
+      ON comments.com_vid_id = videos.vid_id
+      INNER JOIN channels
+      ON comments.com_channel_id = channels.channel_id"
+      );
+
+      $result = $this->db->resultSet();
+
       if ($this->db->rowCount() > 0) {
         return $result;
       } else {

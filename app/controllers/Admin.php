@@ -18,7 +18,7 @@ class Admin extends Controller {
   }
 
   public function index() {
-    $this->view('error/404');
+    redirect('errors/page_not_found');
   }
 
   public function dashboard() {
@@ -322,6 +322,19 @@ class Admin extends Controller {
     } else {
       $this->channels();
     }
+  }
+
+  // ========COMMENTS
+
+  public function comments() {
+    $comments = $this->commentModel->getCommentsAdmin();
+
+    $data = [
+      // comments
+      'comments' => $comments,
+    ];
+
+    $this->view('admin/comments', $data);
   }
 
   // =======CATEGORIES

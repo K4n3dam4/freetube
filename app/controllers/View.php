@@ -13,17 +13,16 @@ class View extends Controller {
   }
 
   public function index() {
-    
+    redirect('errors/page_not_found');
   }
 
   public function video($vid_id = null) {
-    if ($vid_id == null) {
-      redirect('index');
+    if ($vid_id == null || $this->videoModel->getVideo($vid_id) == 0) {
+      redirect('errors/page_not_found');
     } else {
       $main_vid = $this->videoModel->getVideo($vid_id);
       $videos = $this->videoModel->getVideos();
       $categories = $this->categoryModel->getCategories();
-      // $comments = $this->commentModel->getComments($vid_id);
   
       $data = [
         // main video
@@ -56,7 +55,7 @@ class View extends Controller {
     $vid_id;
 
     if (!isset($_POST['like_vid_id'])) {
-      redirect('index');
+      redirect('home/index');
     } else {
 
       $vid_id = trim($_POST['like_vid_id']);
@@ -91,7 +90,7 @@ class View extends Controller {
     $vid_id;
 
     if (!isset($_POST['like_vid_id'])) {
-      redirect('index');
+      redirect('home/index');
     } else {
 
       $vid_id = trim($_POST['like_vid_id']);
@@ -179,8 +178,8 @@ class View extends Controller {
   }
 
   public function edit_com($vid_id = null) {
-    if ($vid_id == null) {
-      redirect('index');
+    if ($vid_id == null || $this->videoModel->getVideo($vid_id) == 0) {
+      redirect('errors/page_not_found');
     } else {
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // sanitize 
@@ -222,7 +221,7 @@ class View extends Controller {
     $vid_id;
 
     if (!isset($_POST['com_vid_id'])) {
-      redirect('index');
+      redirect('home/index');
     } else {
 
       $vid_id = trim($_POST['com_vid_id']);
@@ -239,7 +238,6 @@ class View extends Controller {
         // update com count
         $this->videoModel->updateComments($vid_id, 'sub');
 
-        echo 'view/video/' . $vid_id;
         // load view
         redirect('view/video/' . $vid_id);
 

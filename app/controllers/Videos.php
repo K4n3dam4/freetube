@@ -19,7 +19,14 @@ class Videos extends Controller {
     $channel;
     $is_channel = false;
 
+    // load 
     if ($channel_id != null) {
+      // search for channel id redirect if channel doesn't exist
+      if ($this->channelModel->searchID($channel_id) == 0) {
+        redirect('errors/page_not_found');
+      }
+
+      // if logged in and channel id == session channel id show channel controls
       if (isset($_SESSION['channel_id'])) {
         if ($_SESSION['channel_id'] == $channel_id) {
           $is_channel = true;
@@ -30,7 +37,7 @@ class Videos extends Controller {
         $is_channel = true;
         $channel_id = $_SESSION['channel_id'];
       } else {
-        redirect('index');
+        redirect('home/index');
       }
     }
 

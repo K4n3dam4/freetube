@@ -17,7 +17,7 @@
   <!-- HEADER -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <a href="<?php URLROOT; ?>/freetube/index" class="navbar-brand">free<b class="text-primary">Tube</b></a>  		
+      <a href="<?php URLROOT; ?>/freetube/home/index" class="navbar-brand">free<b class="text-primary">Tube</b></a>  		
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-expanded="false">
         <span class="navbar-toggler-icon"></span>
       </button>

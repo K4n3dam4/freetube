@@ -159,9 +159,9 @@ require APPROOT . '/views/includes/header.php';
         </div>
       </div>
     </div>
-    <a class="button text-white text-decoration-none" href="<?= URLROOT; ?>">Go Home</a>
+    <a class="button text-white text-decoration-none" href="<?= URLROOT; ?>/home/index">Go Home</a>
   </div>
-  <div class="sorry">Oops! Seems like you were lost in space.</div>
+  <div class="sorry">Oops! Seems like you got lost in space.</div>
 </div><a class="inspiration" href="https://dribbble.com/shots/4571035-Error-404" target="_blank" rel="noopener">inspiration</a>
 </div>
 <script src="<?= URLROOT; ?>/js/not-found.js"></script>

@@ -16,6 +16,10 @@ class CORE {
 
       // unset index
       unset($url[0]);
+
+    } elseif ($url !== NULL && !file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
+      $this->currentController = 'Errors';
+      $this->currentMethod = 'page_not_found';
     }
 
     // require controller

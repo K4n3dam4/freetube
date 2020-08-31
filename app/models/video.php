@@ -15,7 +15,7 @@ class Video {
   public function getVideos() {
     // join databases and get all videoa
     $this->db->query(
-    'SELECT videos.*, channels.channel_id, channels.channel_name, channels.channel_img 
+    'SELECT videos.*, channels.channel_id, channels.channel_name, channels.channel_img, categories.cat_id, categories.cat_title  
     FROM videos 
     INNER JOIN channels 
     ON videos.vid_channel_id = channels.channel_id 

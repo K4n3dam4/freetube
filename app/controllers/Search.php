@@ -8,6 +8,10 @@ class Search extends Controller {
     $this->categoryModel = $this->model('Category');
   }
 
+  public function index() {
+    redirect('errors/page_not_found');
+  }
+
   // search keyword
   public function keyword() {
     // all categories
@@ -26,7 +30,7 @@ class Search extends Controller {
 
       if (empty($_POST['search'])) {
 
-        redirect('index');
+        redirect('home/index');
 
       } else {
         $data = [
@@ -39,7 +43,7 @@ class Search extends Controller {
       }
 
     } else {
-      redirect('index');
+      redirect('home/index');
     }
   }
 
@@ -64,7 +68,7 @@ class Search extends Controller {
       $this->view('search/category', $data);
     } else {
       // no cat id redirect to index
-      redirect('index');
+      redirect('home/index');
     }
   }
 
