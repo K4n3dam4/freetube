@@ -89,10 +89,10 @@ channelManage.addEventListener('click', function() {
     });
     toggleEdit.forEach(element => {
       element.classList.toggle('d-none');
-    })
-    toggleEdit.forEach(element => {
       element.innerHTML = 'Edit';
-    });
+      element.classList.remove('btn-danger');
+      element.classList.add('btn-success');
+    })
     editForm.forEach(element => {
       element.classList.remove('animateEdit')
     });
@@ -115,8 +115,12 @@ toggleEdit.forEach(element => {
 
     if (element.innerHTML == 'Edit') {
       element.innerHTML = 'Close';
+      element.classList.toggle('btn-success');
+      element.classList.toggle('btn-danger');
     } else {
       element.innerHTML = 'Edit';
+      element.classList.toggle('btn-success');
+      element.classList.toggle('btn-danger');
     }
 
     form.classList.toggle('animateEdit');

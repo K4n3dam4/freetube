@@ -13,7 +13,7 @@ require APPROOT . '/views/includes/header.php';
         </div>
         <div class="col-lg-6 d-flex align-items-center justify-content-end">
           <?php if ($data['is_channel'] == true) : ?>
-            <button type="button" id="chnnael-upload" class="upload channel-menu action-buttons btn btn-primary mr-3">Upload</button>
+            <button type="button" id="chnnael-upload" class="upload channel-menu action-buttons btn btn-info mr-3">Upload</button>
             <button type="button" id="channel-manage" class="channel-menu action-buttons btn btn-primary mr-3">Manage</button>
             <!-- SEARCH CHANNEL -->
             <button id="close-channel-search" class="text-danger d-none"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
@@ -73,7 +73,7 @@ require APPROOT . '/views/includes/header.php';
                 <span class="invalid-feedback"><?php echo $data['vid_upload_error']; ?></span>
               </div>
               <div class="d-flex justify-content-center">
-                <input type="submit" value="Submit" class="btn btn-primary">
+                <input type="submit" value="Submit" class="btn btn-success">
               </div>
             </form>
           </div>
@@ -85,7 +85,7 @@ require APPROOT . '/views/includes/header.php';
   
 
   <!-- MAIN -->
-  <main class="mb-5 pb-5">
+  <main class="mb-5">
 
     <section class="featured">
       <!-- CONTAINER -->
@@ -115,7 +115,7 @@ require APPROOT . '/views/includes/header.php';
             <?php foreach ($data['videos'] as $key => $video) : ?>
               <div class="featured-card col-lg-4 col-md-6 d-flex align-items-stretch">
                 <div class="card">
-                  <button class="toggle-edit btn btn-outline-primary d-none" data-index="<?php echo $video['vid_id']; ?>">Edit</button>
+                  <button class="toggle-edit btn btn-success d-none" data-index="<?php echo $video['vid_id']; ?>">Edit</button>
                   <div class="channel-edit-form py-4" data-index="<?php echo $video['vid_id']; ?>">
                     <h4 class="text-center mt-4 mb-2">Edit video</h4>
                     <?php if ($data['is_channel'] == true) : ?>
@@ -150,7 +150,7 @@ require APPROOT . '/views/includes/header.php';
                           <span class="invalid-feedback"><?php echo $data['edit_tags_error']; ?></span>
                         </div>
                         <div class="d-flex justify-content-center">
-                          <input type="submit" value="Submit" class="btn btn-primary mt-3">
+                          <input type="submit" value="Submit" class="btn btn-success mt-3">
                         </div>
                       </form>
                     <?php endif; ?>

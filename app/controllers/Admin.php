@@ -314,6 +314,7 @@ class Admin extends Controller {
     
   }
 
+  // delete channel
   public function del_channel($channel_id = null) {
     if ($channel_id != null) {
       $this->channelModel->deleteChannel($channel_id);
@@ -335,6 +336,53 @@ class Admin extends Controller {
     ];
 
     $this->view('admin/comments', $data);
+  }
+
+  // edit comment
+  public function edit_comment() {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      // sanitize
+      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+      $data = [
+        // comment id
+        'com_id' => trim($_POST['com-id']),
+
+        // comment content
+        'com_content' => trim($_POST['com-content'])
+      ];
+
+      if (empty($data['com_content'])) {
+        flash('com-content-error0', 'Please enter a comment', 'alert alert-danger');
+        redirect('admin/comments');
+      } else {
+        if($this->commentModel->editComment($data)) {
+          flash('com-content-success', 'The comment has been updated successfully');
+          redirect('admin/comments');
+        } else {
+          flash('com-content-error1', 'Something went wrong, please try again', 'alert alert-danger');
+          redirect('admin/comments');
+        }
+      }
+
+    } else {
+      $this->comments();
+    }
+  }
+
+  // delete comment
+  public function del_comment($com_id = null) {
+    if ($com_id != null) {
+      if ($this->commentModel->deleteComment($com_id)) {
+        flash('com-deleted', 'The comment has been deleted successfully');
+        redirect('admin/comments');
+      } else {
+        flash('com-del-error', 'Something went wrong, please try again', 'alert alert-danger');
+        redirect('admin/comments');
+      }
+    } else {
+      $this->channels();
+    }
   }
 
   // =======CATEGORIES

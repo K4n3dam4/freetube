@@ -17,14 +17,14 @@ require APPROOT . '/views/includes/admin_header.php';
           Channels
         </h1>
 
-        <div class="col-lg-6 col-md-12">
-          <?php flash('channel_updated');?>
-          <?php flash('channel_updtade_error');?>
-          <?php flash('img_update_error');?>
-          <?php flash('channel_deleted');?>
+        <div class="col-lg-6 col-md-12 pl-0">
+          <?php flash('com-content-success');?>
+          <?php flash('com-content-error0');?>
+          <?php flash('com-content-error1');?>
+          <?php flash('com-deleted');?>
         </div>
 
-        <form action="<?php echo URLROOT;?>/admin/edit_channel" method="post" enctype="multipart/form-data">
+        <form action="<?php echo URLROOT;?>/admin/edit_comment" method="post" enctype="multipart/form-data">
           <table id="comment-table" class="table-md table-light table-bordered table-responsive table-hover text-dark" cellspacing="0" width="100%">
             <thead class="">
               <tr>
@@ -42,13 +42,13 @@ require APPROOT . '/views/includes/admin_header.php';
               <tr>
                 <td><?php echo $comment['com_id'];?></td>
                 <td>
-                  <video muted src="<?php echo URLROOT; ?>/<?php echo $comment['vid_url']; ?>"></video>
+                  <?php echo $comment['vid_title']; ?>
                 </td>
                 <td>
                   <?php echo $comment['channel_name'];?>
                 </td>
                 <td>
-                  <textarea class="edit-comment d-none text-info w-100" data-index="<?php echo $comment['com_id']; ?>"><?php echo $comment['com_content'];?></textarea>
+                  <textarea class="edit-comment d-none text-info" data-index="<?php echo $comment['com_id']; ?>"><?php echo $comment['com_content'];?></textarea>
                   <div class="comment-table-content justify-content-center" data-index="<?php echo $comment['com_id']; ?>">
                     <?php echo $comment['com_content']; ?>
                   </div>

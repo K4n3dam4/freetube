@@ -17,14 +17,14 @@ require APPROOT . '/views/includes/admin_header.php';
           Channels
         </h1>
 
-        <div class="col-lg-6 col-md-12">
+        <div class="col-lg-6 col-md-12 pl-0">
           <?php flash('channel_updated');?>
-          <?php flash('channel_updtade_error');?>
+          <?php flash('channel_update_error');?>
           <?php flash('img_update_error');?>
           <?php flash('channel_deleted');?>
         </div>
 
-        <form action="<?php echo URLROOT;?>/admin/edit_channel" method="post" enctype="multipart/form-data">
+        <form action="<?php echo URLROOT;?>/admin/edit_channel" method="post">
           <table id="channel-table" class="table-md table-light table-bordered table-responsive table-hover text-dark" cellspacing="0" width="100%">
             <thead class="">
               <tr>

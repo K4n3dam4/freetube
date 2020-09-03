@@ -68,7 +68,7 @@ class Comment  {
 
     public function getCommentsAdmin() {
       $this->db->query(
-      "SELECT comments.*, channels.channel_name, videos.vid_url
+      "SELECT comments.*, channels.channel_name, videos.vid_title
       FROM comments 
       INNER JOIN videos
       ON comments.com_vid_id = videos.vid_id
@@ -95,7 +95,11 @@ class Comment  {
     $this->db->bind(1, $data['com_content']);
     $this->db->bind(2, $data['com_id']);
 
-    $this->db->execute();
+    if ($this->db->execute()) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   // ======= DELETE COMMENT

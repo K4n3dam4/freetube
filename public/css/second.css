@@ -128,5 +128,16 @@ table textarea {
 }
 
 .edit-video {
-  height: 50px;
+  width: 100%;
+  height: 100%;
 }
+
+.video-comments {
+  width: 100%;
+}
+
+.edit-comment {
+  height: 200px;
+  width: 100%;
+}
+

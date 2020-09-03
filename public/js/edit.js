@@ -196,7 +196,7 @@ function openCommentEdit(button) {
     element.classList.add('d-none');
     if (element.getAttribute('data-index') == index) {
       element.classList.toggle('d-none');
-      element.setAttribute('name', 'channel-id');
+      element.setAttribute('name', 'com-id');
     }
   });
 

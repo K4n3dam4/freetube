@@ -150,9 +150,6 @@ require APPROOT . '/views/includes/header.php';
                 editComment();
               <?php endif; ?>
             } else {
-              <?php if (isLoggedIn()) :?>
-                editComment();
-              <?php endif; ?>
               reachedMax = true;
             }
           }
