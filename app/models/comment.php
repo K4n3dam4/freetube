@@ -43,47 +43,64 @@ class Comment  {
     return $this->db->resultSet();
   }
 
-    // get all comments ajax
-    public function getCommentsAjax($start, $limit, $id) {
-      // join databases and get all videos
-      $this->db->query(
-      "SELECT *
-      FROM comments
-      INNER JOIN channels
-      ON comments.com_channel_id = channels.channel_id
-      WHERE com_vid_id = (?)
-      ORDER BY com_date DESC
-      LIMIT $start,$limit");
+  public function getCommentById($com_id) {
+    $this->db->query(
+    "SELECT * 
+    FROM comments
+    WHERE com_id = (?)");
 
-      $this->db->bind(1, $id);
-      
-      $result = $this->db->resultSet();
-  
-      if ($this->db->rowCount() > 0) {
-        return $result;
-      } else {
-        return false;
-      }
+    $this->db->bind(1, $com_id);
+
+    $comment = $this->db->single();
+
+    if ($this->db->rowCount() > 0) {
+      return $comment;
+    } else {
+      return false;
     }
+  }
 
-    public function getCommentsAdmin() {
-      $this->db->query(
-      "SELECT comments.*, channels.channel_name, videos.vid_title
-      FROM comments 
-      INNER JOIN videos
-      ON comments.com_vid_id = videos.vid_id
-      INNER JOIN channels
-      ON comments.com_channel_id = channels.channel_id"
-      );
+  // get all comments ajax
+  public function getCommentsAjax($start, $limit, $id) {
+    // join databases and get all videos
+    $this->db->query(
+    "SELECT *
+    FROM comments
+    INNER JOIN channels
+    ON comments.com_channel_id = channels.channel_id
+    WHERE com_vid_id = (?)
+    ORDER BY com_date DESC
+    LIMIT $start,$limit");
 
-      $result = $this->db->resultSet();
+    $this->db->bind(1, $id);
+    
+    $result = $this->db->resultSet();
 
-      if ($this->db->rowCount() > 0) {
-        return $result;
-      } else {
-        return false;
-      }
+    if ($this->db->rowCount() > 0) {
+      return $result;
+    } else {
+      return false;
     }
+  }
+
+  public function getCommentsAdmin() {
+    $this->db->query(
+    "SELECT comments.*, channels.channel_name, videos.vid_title
+    FROM comments 
+    INNER JOIN videos
+    ON comments.com_vid_id = videos.vid_id
+    INNER JOIN channels
+    ON comments.com_channel_id = channels.channel_id"
+    );
+
+    $result = $this->db->resultSet();
+
+    if ($this->db->rowCount() > 0) {
+      return $result;
+    } else {
+      return false;
+    }
+  }
 
   // Edit COMMENT
   public function editComment($data) {
@@ -113,7 +130,11 @@ class Comment  {
 
     $this->db->bind(1, $comment_id);
 
-    $this->db->execute();
+    if ($this->db->execute()) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   // delete all comments

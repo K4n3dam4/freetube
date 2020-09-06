@@ -372,16 +372,24 @@ class Admin extends Controller {
 
   // delete comment
   public function del_comment($com_id = null) {
-    if ($com_id != null) {
+    $comment = $this->commentModel->getCommentById($com_id);
+
+    if ($com_id != null && $comment != false) {
       if ($this->commentModel->deleteComment($com_id)) {
+        // update com count
+        $this->videoModel->updateComments($comment['com_vid_id'], 'sub');
+
+        // flash message
         flash('com-deleted', 'The comment has been deleted successfully');
+
+        // // redirect to admin comments
         redirect('admin/comments');
       } else {
         flash('com-del-error', 'Something went wrong, please try again', 'alert alert-danger');
         redirect('admin/comments');
       }
     } else {
-      $this->channels();
+      $this->comments();
     }
   }
 
