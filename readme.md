@@ -16,7 +16,7 @@ Freetube is an online video platform. It has a working backend and includes a  s
 4. Change URLROOT to your server directory
 5. Configure the database connection in the DatabaseConfig class
 
-**IMPORTANT: If you need to rename the freetube folder you must also change the directory names in the Config and HTACCESS files.
+**IMPORTANT: If you need to rename the freetube folder you must also change the directory names in the Config and HTACCESS files.**
 
 
 **2. Channels**
