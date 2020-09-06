@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Aug 24, 2020 at 10:48 AM
+-- Generation Time: Sep 06, 2020 at 06:25 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -32,7 +32,8 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
 (22, 'Travel'),
 (24, 'Music'),
-(25, 'Finance');
+(25, 'Finance'),
+(26, 'Lifestyle');
 
 -- --------------------------------------------------------
 
@@ -86,7 +87,9 @@ INSERT INTO `comments` (`com_id`, `com_vid_id`, `com_channel_id`, `com_content`,
 (89, 132, 23, 'Nice!', '2020-08-21 17:05:04'),
 (90, 132, 23, 'Would love to go there!', '2020-08-21 17:05:20'),
 (91, 137, 23, 'Special guest Victor Ruiz!', '2020-08-21 17:08:06'),
-(92, 136, 23, 'Are there any good parties you can recommend in Vegas?', '2020-08-21 17:10:07');
+(92, 136, 23, 'Are there any good parties you can recommend in Vegas?', '2020-08-21 17:10:07'),
+(94, 136, 19, 'Nice!', '2020-08-27 13:12:23'),
+(130, 136, 18, 'Hello nice channel!', '2020-09-05 17:40:54');
 
 -- --------------------------------------------------------
 
@@ -140,12 +143,12 @@ CREATE TABLE `videos` (
 INSERT INTO `videos` (`vid_id`, `vid_cat_id`, `vid_channel_id`, `vid_tags`, `vid_title`, `vid_url`, `vid_com_count`, `vid_like_count`, `vid_date`) VALUES
 (129, 22, 19, 'Paris, Bridge, Bir Hakeim, Europe, Travel', 'Trip to Paris - Part 1', 'assets/videos/channels/19/bir_hakeim.mp4', 0, 1, '2020-08-21'),
 (130, 22, 19, 'Paris, Eifeltower, Europe, Travel', 'Trip to Paris - Part 2', 'assets/videos/channels/19/eifeltower.mp4', 1, 1, '2020-08-21'),
-(131, 22, 19, 'Airport, Flight, Waiting, Miles & More, Singapore Airlines', 'On the Way to Singapore', 'assets/videos/channels/19/people_waiting.mp4', 0, 0, '2020-08-21'),
+(131, 22, 19, 'Airport, Flight, Waiting, Miles & More, Singapore Airlines', 'On the Way to Singapore - Airport', 'assets/videos/channels/19/people_waiting.mp4', 0, 0, '2020-08-21'),
 (132, 22, 19, 'Singapore, Party, Night, Fun', 'Party in Singapore', 'assets/videos/channels/19/Night-Out.mp4', 2, 2, '2020-08-21'),
 (133, 22, 20, 'Camping, Travel, Mountains, Holidays', 'Camping in Apalachia', 'assets/videos/channels/20/terrace.mp4', 0, 0, '2020-08-21'),
 (134, 22, 20, 'Portugal, Beach, Sunset, Dawn, Riff', 'Portugal - 2020', 'assets/videos/channels/20/portugal.mp4', 0, 0, '2020-08-21'),
-(135, 22, 20, 'Portugal, Beach, Sea, Impressive', 'Portugal - 2019', 'assets/videos/channels/20/coverr-landscape-in-algarve-portugal-2813.mp4', 0, 0, '2020-08-21'),
-(136, 22, 20, 'Vegas, Casino, Jackpot, Fun, Hangover, Party', 'Las Vegas - 2019', 'assets/videos/channels/20/Night-vision.mp4', 2, 3, '2020-08-21'),
+(135, 22, 20, 'Portugal, Beach, Sea, Impressive', 'Portugal - 2018', 'assets/videos/channels/20/coverr-landscape-in-algarve-portugal-2813.mp4', 0, 0, '2020-08-21'),
+(136, 22, 20, 'Vegas, Casino, Jackpot, Fun, Hangover, Party', 'Las Vegas - 2019', 'assets/videos/channels/20/Night-vision.mp4', 4, 3, '2020-08-21'),
 (137, 24, 23, 'Lake, Party, Fun, Summer, Techno', 'Open Air at Lake', 'assets/videos/channels/23/coverr-drone-shot-lake-party-0293.mp4', 1, 1, '2020-08-21');
 
 --
@@ -190,7 +193,7 @@ ALTER TABLE `videos`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `channels`
@@ -202,7 +205,7 @@ ALTER TABLE `channels`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `com_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `com_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `likes`
