@@ -10,7 +10,7 @@ Freetube is an online video platform. It has a working backend and includes a  s
 
 **1. Config**
 
-1. Move the freetube folder into your Mamp/Xamp server environment
+1. Move the freetube folder into your Mamp/Xamp server environment (IMPORTANT: IF YOU RENAME THE FOLDER YOU NEED TO CHANGE THE NAMES IN YOUR CONFIG FILE AND HTACCESS FILES ACCORDINGLY)
 2. Dump the freetube_dump.sql file in a MySQL database tool like phpadmin
 3. Open the Config.php file in the app/config directory
 4. Change URLROOT to your server directory
