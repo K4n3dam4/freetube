@@ -34,14 +34,6 @@
             <?php endforeach; ?>
             </div>
           </li>
-
-          <li class="navbar-nav">
-            <a class="nav-link" href="">Top Channels</a>
-          </li>
-
-          <li class="navbar-nav">
-            <a class="nav-link" href="">About</a>
-          </li>
         </ul>
     
         <!-- SEARCH FORM -->
