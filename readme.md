@@ -8,6 +8,8 @@ Freetube is an online video platform. It has a working backend and includes a si
 
 1. Config
 2. Channels
+3. Credits
+4. Login
 
 **1. Config**
 
@@ -22,6 +24,12 @@ Freetube is an online video platform. It has a working backend and includes a si
 **2. Channels**
 
 To log into admin account use the following credentials:
+
+**3. Credits**
+
+404 Page was created by Owen *https://codepen.io/UltraOwen1000/pen/JjdjZKO* (MIT License)
+
+**Login**
 
 - Channel Email: *admin@freetube.com*
 - Password: _FreeTubePW#1_
