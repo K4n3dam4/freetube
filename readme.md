@@ -1,12 +1,13 @@
 # Freetube 1.2
+
 ### created by Nils Boehm
 
-Freetube is an online video platform. It has a working backend and includes a  simple content management system.
+Freetube is an online video platform. It has a working backend and includes a simple content management system.
 
 ### Content
+
 1. Config
 2. Channels
-
 
 **1. Config**
 
@@ -18,12 +19,9 @@ Freetube is an online video platform. It has a working backend and includes a  s
 
 **IMPORTANT: If you need to rename the freetube folder you must also change the directory names in the Config and HTACCESS files.**
 
-
 **2. Channels**
 
 To log into admin account use the following credentials:
-* Channel Email: *john.doe@gmail.com*
-* Password: *TestPasswort#123*
 
-To log into other existing accounts please refer to your database. Every existing channel has the same password: *TestPasswort#123*
-
+- Channel Email: *admin@freetube.com*
+- Password: _FreeTubePW#1_
